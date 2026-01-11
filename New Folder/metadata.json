@@ -1,0 +1,7 @@
+{
+  "name": "TMS - Nazir Hossain & Son",
+  "description": "A comprehensive Transport Management System for managing vehicles, drivers, trips, and payments with multi-role access (Admin, Manager, Driver).",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TMS - Nazir Hossain & Son</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8fafc;
+        overscroll-behavior-y: contain;
+      }
+      .offline-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(12px);
+        z-index: 9999;
+        color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 24px;
+      }
+      body.is-offline .offline-overlay {
+        display: flex;
+      }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "recharts": "https://esm.sh/recharts@2.12.7",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    
+    <div class="offline-overlay">
+      <div class="text-6xl mb-6">📡</div>
+      <h1 class="text-2xl font-black mb-3">ইন্টারনেট সংযোগ নেই!</h1>
+      <p class="text-slate-400 max-w-xs font-medium">এই অ্যাপ্লিকেশনটি শুধুমাত্র ইন্টারনেটে চলে। দয়া করে আপনার সংযোগটি পরীক্ষা করুন।</p>
+      <button onclick="window.location.reload()" class="mt-8 px-6 py-3 bg-blue-600 text-white rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl">পুনরায় চেষ্টা করুন</button>
+    </div>
+
+    <script type="module" src="/index.tsx"></script>
+    
+    <script>
+      function updateOnlineStatus() {
+        if (navigator.onLine) {
+          document.body.classList.remove('is-offline');
+        } else {
+          document.body.classList.add('is-offline');
+        }
+      }
+
+      window.addEventListener('online', updateOnlineStatus);
+      window.addEventListener('offline', updateOnlineStatus);
+      updateOnlineStatus();
+    </script>
+  </body>
+</html>
